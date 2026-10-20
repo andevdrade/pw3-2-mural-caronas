@@ -67,3 +67,22 @@
   * `PUT /api/caronas/{id}` — Edita dados da carona.
   * `DELETE /api/caronas/{id}` — Cancela a oferta de carona.
   * `POST /api/caronas/{id}/reservar` — Decrementa 1 vaga e atualiza status se zerar.
+
+* **Pseudocódigo da Regra de Negócio (Reserva de Vaga):**
+```text
+Função reservarVaga(caronaId):
+    carona = repository.buscarPorId(caronaId)
+    
+    Se carona.vagasDisponiveis <= 0 Ou carona.status == "LOTADO" Então
+        LançarErro("Não há vagas disponíveis para esta carona.")
+    FimSe
+    
+    carona.vagasDisponiveis = carona.vagasDisponiveis - 1
+    
+    Se carona.vagasDisponiveis == 0 Então
+        carona.status = "LOTADO"
+    FimSe
+    
+    Retornar repository.salvar(carona)
+FimFuncao
+```
