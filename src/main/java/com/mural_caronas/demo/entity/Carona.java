@@ -28,7 +28,7 @@ public class Carona {
     private LocalDateTime horarioSaida;
 
     @Column(name = "NR_VAGASDISPONIVEIS")
-    private Double vagasDisponiveis;
+    private Integer vagasDisponiveis;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TP_STATUS")
