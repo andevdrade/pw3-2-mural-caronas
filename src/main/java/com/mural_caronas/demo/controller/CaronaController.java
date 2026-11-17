@@ -1,6 +1,7 @@
 package com.mural_caronas.demo.controller;
 
 import com.mural_caronas.demo.dto.CaronaResponseDTO;
+import com.mural_caronas.demo.entity.Carona;
 import com.mural_caronas.demo.service.CaronaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,20 @@ public class CaronaController {
     public ResponseEntity<CaronaResponseDTO> salvar(@RequestBody CaronaResponseDTO dto){
         CaronaResponseDTO criada = caronaService.salvar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(criada);
+    }
+    @PutMapping("{id}")
+    public ResponseEntity<CaronaResponseDTO> atualizar(@PathVariable Long id,@RequestBody CaronaResponseDTO dto){
+        CaronaResponseDTO atualizada = caronaService.atualizar(id, dto);
+        return ResponseEntity.ok(atualizada);
+    }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        caronaService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/reservar/{id}")
+    public ResponseEntity<CaronaResponseDTO> reservarVaga(@PathVariable Long id) {
+        CaronaResponseDTO resposta = caronaService.reservarVaga(id);
+        return ResponseEntity.ok(resposta);
     }
 }
