@@ -1,14 +1,12 @@
 package com.mural_caronas.demo.controller;
 
 import com.mural_caronas.demo.dto.CaronaResponseDTO;
-import com.mural_caronas.demo.entity.Carona;
 import com.mural_caronas.demo.service.CaronaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
