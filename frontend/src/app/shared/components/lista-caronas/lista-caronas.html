@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Mural de Caronas Disponíveis</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Data / Hora</th>
+        <th>Vagas</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (carona of caronas; track carona.id) {
+        <tr>
+          <td>{{ carona.origem }}</td>
+          <td>{{ carona.destino }}</td>
+          <td>{{ carona.dataHora }}</td>
+          <td>{{ carona.vagasDisponiveis }}</td>
+          <td>
+            <button [disabled]="carona.vagasDisponiveis === 0" (click)="reservar(carona.id!)">
+              Reservar
+            </button>
+
+            <button (click)="excluir(carona.id!)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5">Nenhuma carona cadastrada.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
