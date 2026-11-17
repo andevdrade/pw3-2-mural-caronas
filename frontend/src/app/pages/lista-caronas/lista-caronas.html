@@ -1,6 +1,8 @@
 <div class="container">
   <h2>Mural de Caronas Disponíveis</h2>
 
+  <button routerLink="/novo" style="margin-bottom: 15px;">+ Nova Carona</button>
+
   <table>
     <thead>
       <tr>
@@ -19,18 +21,16 @@
           <td>{{ carona.dataHora }}</td>
           <td>{{ carona.vagasDisponiveis }}</td>
           <td>
-            <button [disabled]="carona.vagasDisponiveis === 0" (click)="reservar(carona.id!)">
+            <button [disabled]="carona.vagasDisponiveis === 0" (click)="reservar(carona.id)">
               Reservar
             </button>
-
-            <button (click)="excluir(carona.id!)">
+            <button [routerLink]="['/editar', carona.id]">
+              Editar
+            </button>
+            <button (click)="excluir(carona.id)">
               Excluir
             </button>
           </td>
-        </tr>
-      } @empty {
-        <tr>
-          <td colspan="5">Nenhuma carona cadastrada.</td>
         </tr>
       }
     </tbody>

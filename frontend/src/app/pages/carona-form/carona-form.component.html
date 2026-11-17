@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>{{ idCarona ? 'Editar Carona' : 'Nova Carona' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div>
+      <label>Origem:</label>
+      <input type="text" formControlName="origem">
+    </div>
+
+    <div>
+      <label>Destino:</label>
+      <input type="text" formControlName="destino">
+    </div>
+
+    <div>
+      <label>Data e Hora:</label>
+      <input type="datetime-local" formControlName="dataHora">
+    </div>
+
+    <div>
+      <label>Vagas Disponíveis:</label>
+      <input type="number" formControlName="vagasDisponiveis">
+    </div>
+
+    <button type="submit">Salvar</button>
+    <button type="button" routerLink="/">Cancelar</button>
+  </form>
+</div>

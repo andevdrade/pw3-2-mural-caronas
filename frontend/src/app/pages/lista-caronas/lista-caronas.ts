@@ -1,12 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CaronaService } from '../../../core/services/carona.service';
-import { Carona } from '../../../core/models/carona';
+import { RouterLink } from '@angular/router';
+import { CaronaService } from '../../core/services/carona.service';
+import { Carona } from '../../core/models/carona';
 
 @Component({
   selector: 'app-lista-caronas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './lista-caronas.html',
   styleUrl: './lista-caronas.css'
 })
