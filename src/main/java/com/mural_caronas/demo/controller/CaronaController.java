@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +33,20 @@ public class CaronaController {
     public ResponseEntity<CaronaResponseDTO> salvar(@RequestBody CaronaResponseDTO dto){
         CaronaResponseDTO criada = caronaService.salvar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(criada);
+    }
+    @PutMapping("{id}")
+    public ResponseEntity<CaronaResponseDTO> atualizar(@PathVariable Long id,@RequestBody CaronaResponseDTO dto){
+        CaronaResponseDTO atualizada = caronaService.atualizar(id, dto);
+        return ResponseEntity.ok(atualizada);
+    }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        caronaService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/reservar/{id}")
+    public ResponseEntity<CaronaResponseDTO> reservarVaga(@PathVariable Long id) {
+        CaronaResponseDTO resposta = caronaService.reservarVaga(id);
+        return ResponseEntity.ok(resposta);
     }
 }
